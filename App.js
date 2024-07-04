@@ -1,5 +1,6 @@
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View  , Button , TextInput , FlatList} from 'react-native';
+import { StyleSheet, View  , Button , TextInput , FlatList} from 'react-native';
+import Goal from "./.expo/Components/GoalItem"
 import { useState } from 'react';
 
 export default function App() {
@@ -23,11 +24,7 @@ export default function App() {
          ></Button>
       </View>
         <FlatList data={courseGoal} renderItem={(itemData)=>{
-          return  <View style={styles.OutPutView}>
-         <View>
-        <Text style={styles.outPutList}>{itemData.item.text}</Text>
-        </View>
-      </View>
+          return <Goal text={itemData.item.value}/>
         }}
          keyExtractor={(item  , index)=>{
           return item.id;
@@ -43,14 +40,13 @@ const styles = StyleSheet.create({
  container:{
   paddingTop:50,
   paddingHorizontal:16,
-  // backgroundColor:"#FFEFBA"
-  // backgroundColor: "#4158D0",
+  backgroundColor: "#4158D0",
 // backgroundImage: "linearGradient(43deg, #4158D0 0%, #C850C0 46%, #FFCC70 100%)"
 
  },
  inputContainer:{
   justifyContent:"space-between",
-  flexDirection:"row",
+  flexDirection:"row",  
  },
  input:{
  backgroundColor:"white",
@@ -59,15 +55,5 @@ const styles = StyleSheet.create({
  borderWidth:2,
  padding:5
  },
- OutPutView:{
-  marginTop:20,
- },
- outPutList:{
-  // margin:10,
-  backgroundColor:"black",
-  padding:8,
-  color:"white",
-  borderRadius:10,
- }
 });
 
